@@ -198,7 +198,7 @@ class LogStash::Inputs::Gelf < LogStash::Inputs::Base
     @udp = UDPSocket.new(Socket::AF_INET)
     @udp.bind(@host, @port_udp)
 
-    while !@udp.closed?
+    while !stop?
       line, client = @udp.recvfrom(8192)
 
       begin
