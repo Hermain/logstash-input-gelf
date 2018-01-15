@@ -116,8 +116,8 @@ class LogStash::Inputs::Gelf < LogStash::Inputs::Base
 
   public
   def stop
-    @udp.close if @use_udp
-    @tcp.close if @use_tcp
+    @udp.close if !udp.nil
+    @tcp.close if !tcp.nil
   rescue IOError
   end
 
